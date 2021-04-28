@@ -9,6 +9,7 @@ import yahoofinance.YahooFinance;
 import javax.inject.Singleton;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Map;
 
 @Singleton
 public class YahooFinanceServiceImpl implements FinancialService {
@@ -30,6 +31,17 @@ public class YahooFinanceServiceImpl implements FinancialService {
         }
 
         return price;
+    }
+
+    @Override
+    public String getListFinancialData(String[] indices) {
+        try{
+            Map<String, Stock> prices = YahooFinance.get(indices);
+            return prices.toString().toUpperCase();
+        } catch (IOException e){
+            logger.error(e.getMessage());
+        }
+        return null;
     }
 
 }

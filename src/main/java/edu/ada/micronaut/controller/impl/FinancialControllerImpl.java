@@ -23,8 +23,7 @@ public class FinancialControllerImpl implements FinancialController {
     @Produces(MediaType.APPLICATION_JSON)
     public Object getFinancialData(
             @QueryValue("provider") String financial_data_provider,
-            @QueryValue("stock_index") String stock_index
-    ) {
+            @QueryValue("stock_index") String stock_index) {
         if(financial_data_provider.equals("yahoo")) {
             return financialService.getFinancialData(stock_index.toUpperCase());
         } else {
@@ -32,4 +31,15 @@ public class FinancialControllerImpl implements FinancialController {
         }
     }
 
+    @Override
+    @Get(value = "/batch")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Object getListFinancialData(@QueryValue("stock_indices") String[] indices,
+                                       @QueryValue("provider") String financial_data_provider) {
+        if(financial_data_provider.equals("yahoo")) {
+            return financialService.getListFinancialData(indices);
+        } else {
+            return HttpResponse.badRequest("Provider Name Is Invalid");
+        }
+    }
 }

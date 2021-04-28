@@ -12,3 +12,10 @@ out/
 .settings
 .classpath
 .factorypath
+
+/src/main/java/edu/ada/micronaut/service/impl/AuthenticationServiceImpl.java
+/src/main/java/edu/ada/micronaut/service/AuthenticationService.java
+/src/main/java/edu/ada/micronaut/controller/impl/AuthenticationWSImpl.java
+/src/main/java/edu/ada/micronaut/controller/AuthenticationWS.java
+/src/main/java/edu/ada/micronaut/dto/
+/src/main/java/edu/ada/micronaut/repository/
